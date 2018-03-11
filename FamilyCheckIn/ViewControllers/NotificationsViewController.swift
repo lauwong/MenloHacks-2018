@@ -61,7 +61,7 @@ class NotificationsViewController: UITableViewController {
         let interval = String(notification.interval)
         let startTime = String(notification.startTime)
         let date = notification.date
-        cell.infoLabel.text = numberOfTimes + " times, once every " + interval + "hours starting at " + startTime + " on " + date
+        cell.infoLabel.text = numberOfTimes + " times, once every " + interval + " hours starting at " + startTime + " on " + date
         return cell
     }
     

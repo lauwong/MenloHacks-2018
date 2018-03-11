@@ -24,7 +24,6 @@ class NewCheckInViewController: UIViewController, CNContactPickerDelegate, UIScr
     let timePicker = UIDatePicker()
     let intervalPicker = UIDatePicker()
     var selectedContact = CNContact()
-    let startDate = Date()
     var timeInterval = TimeInterval()
     let ref = Database.database().reference(withPath: "activeNotifications")
     
@@ -116,9 +115,46 @@ class NewCheckInViewController: UIViewController, CNContactPickerDelegate, UIScr
     }
     
     func checkEndTime() {
-        if let repetitions = numberOfTextField.text {
-            let endDate = startDate.addingTimeInterval(timeInterval * Double(repetitions)!)
-            endingAtLabel.text = "Currently ending at : " + String(describing: endDate)
+        //var date = Date()
+        if let repetitions = numberOfTextField.text, let intRepetitions = Int(repetitions) {
+            if let startDate = startDateTextField.text, let startTime = startTimeTextField.text, let startInterval = intervalTextField.text {
+                let timeFormatter = DateFormatter()
+                timeFormatter.locale = Locale(identifier: "en_US_POSIX")
+                timeFormatter.dateFormat = "hh:mm a"
+                let formattedStartTime = timeFormatter.date(from: startTime)
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.dateFormat = "mm/dd/yy"
+                let formattedStartDate = dateFormatter.date(from: startDate)
+                
+                let intervalFormatter = DateFormatter()
+                intervalFormatter.locale = Locale(identifier: "en_US_POSIX")
+                intervalFormatter.dateFormat = "hh:mm:ss"
+                let formattedInterval = intervalFormatter.date(from: startInterval)
+                
+                if let moreTime = formattedStartTime, let moreDates = formattedStartDate, let moreIntervals = formattedInterval {
+                    let calendar = Calendar.current
+                    let timeComponent = calendar.dateComponents([.hour, .minute], from: moreTime)
+                    var dateComponent = calendar.dateComponents([.year, .month, .day], from: moreDates)
+                    var intervalComponent = calendar.dateComponents([.hour, .minute, .second], from: moreIntervals)
+                    
+                    var mergedComponents = DateComponents()
+                    mergedComponents.year = dateComponent.year
+                    mergedComponents.month = dateComponent.month
+                    mergedComponents.day = dateComponent.day
+                    mergedComponents.hour = timeComponent.hour
+                    mergedComponents.minute = timeComponent.minute
+                    mergedComponents.second = 0
+                    
+                    if let combinedDate = calendar.date(from: mergedComponents) {
+                        if let endDateHour = calendar.date(byAdding: .hour, value: intRepetitions * intervalComponent.hour!, to: combinedDate), let endDateCombined = calendar.date(byAdding: .minute, value: intRepetitions * intervalComponent.minute!, to: endDateHour) {
+                        //let endDate = combinedDate.addingTimeInterval(timeInterval * doubleRepetitions)
+                            endingAtLabel.text = "Currently ending at : " + String("\(endDateCombined)")
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -193,6 +229,7 @@ extension NewCheckInViewController {
         dateFormatter.locale = Locale(identifier: "en_US")
         startDateTextField.text = dateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)
+        checkEndTime()
     }
 }
 
@@ -226,6 +263,7 @@ extension NewCheckInViewController {
         dateFormatter.locale = Locale(identifier: "en_US")
         startTimeTextField.text = dateFormatter.string(from: timePicker.date)
         self.view.endEditing(true)
+        checkEndTime()
     }
 }
 
@@ -260,6 +298,7 @@ extension NewCheckInViewController {
         intervalTextField.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
         timeInterval = TimeInterval(time)
         self.view.endEditing(true)
+        checkEndTime()
     }
 }
 
