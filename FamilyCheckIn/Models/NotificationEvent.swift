@@ -9,20 +9,18 @@
 import UIKit
 import Firebase
 
-class Notification {
+class NotificationEvent {
     var notifier: String
     var reciever: String
     var date: String
     var numberOf: Int
-    var startHour: Int
-    var startMin: Int
-    var intervalHour: Int
-    var intervalMin: Int
+    var startTime: String
+    var interval: String
     let ref: DatabaseReference?
     let key: String
     
-    init?(notifier: String, reciever: String, date: String, numberOf: Int, startHour: Int, startMin: Int, intervalHour: Int, intervalMin: Int, key: String = "") {
-        if(notifier.isEmpty || reciever.isEmpty || date.isEmpty || key.isEmpty) {
+    init?(notifier: String, reciever: String, date: String, numberOf: Int, startTime: String, interval: String, key: String = "") {
+        if(notifier.isEmpty || reciever.isEmpty || date.isEmpty || startTime.isEmpty || interval.isEmpty) {
             return nil
         }
         self.key = key
@@ -30,10 +28,8 @@ class Notification {
         self.reciever = reciever
         self.date = date
         self.numberOf = numberOf
-        self.startHour = startHour
-        self.startMin = startMin
-        self.intervalHour = intervalHour
-        self.intervalMin = intervalMin
+        self.startTime = startTime
+        self.interval = interval
         self.ref = nil
     }
     
@@ -44,10 +40,8 @@ class Notification {
         reciever = snapshotValue["reciever"] as! String
         date = snapshotValue["date"] as! String
         numberOf = snapshotValue["numberOf"] as! Int
-        startHour = snapshotValue["startTime"] as! Int
-        startMin = snapshotValue["startMin"] as! Int
-        intervalHour = snapshotValue["intervalHour"] as! Int
-        intervalMin = snapshotValue["intervalMin"] as! Int
+        startTime = snapshotValue["startTime"] as! String
+        interval = snapshotValue["intervalTime"] as! String
         ref = snapshot.ref
     }
     
@@ -57,10 +51,8 @@ class Notification {
             "receiver": reciever,
             "date": date,
             "numberOf": numberOf,
-            "startHour": startHour,
-            "startMin": startMin,
-            "intervalHour": intervalHour,
-            "intervalMin": intervalMin
+            "startTime": startTime,
+            "interval": interval
         ]
     }
 }

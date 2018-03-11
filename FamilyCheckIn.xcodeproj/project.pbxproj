@@ -14,7 +14,7 @@
 		2BC05CEF20547AD6001EF7B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BC05CED20547AD6001EF7B0 /* LaunchScreen.storyboard */; };
 		2BC05CF92054A9F1001EF7B0 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC05CF82054A9F1001EF7B0 /* NotificationsViewController.swift */; };
 		2BC05CFD2054AB5C001EF7B0 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC05CFC2054AB5C001EF7B0 /* NotificationsTableViewCell.swift */; };
-		2BC05CFF2054AC22001EF7B0 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC05CFE2054AC22001EF7B0 /* Notification.swift */; };
+		2BC05CFF2054AC22001EF7B0 /* NotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC05CFE2054AC22001EF7B0 /* NotificationEvent.swift */; };
 		2BC05D012054ADC8001EF7B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BC05D002054ADC8001EF7B0 /* GoogleService-Info.plist */; };
 		80C22F2160524C970F44FD90 /* Pods_FamilyCheckIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE4605089813D50D6BEA2A1 /* Pods_FamilyCheckIn.framework */; };
 /* End PBXBuildFile section */
@@ -30,7 +30,7 @@
 		2BC05CF020547AD6001EF7B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BC05CF82054A9F1001EF7B0 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		2BC05CFC2054AB5C001EF7B0 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
-		2BC05CFE2054AC22001EF7B0 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		2BC05CFE2054AC22001EF7B0 /* NotificationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationEvent.swift; sourceTree = "<group>"; };
 		2BC05D002054ADC8001EF7B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		450525940F538F7380E4A213 /* Pods-FamilyCheckIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamilyCheckIn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FamilyCheckIn/Pods-FamilyCheckIn.debug.xcconfig"; sourceTree = "<group>"; };
 		DFE4605089813D50D6BEA2A1 /* Pods_FamilyCheckIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyCheckIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				2BC05CFC2054AB5C001EF7B0 /* NotificationsTableViewCell.swift */,
-				2BC05CFE2054AC22001EF7B0 /* Notification.swift */,
+				2BC05CFE2054AC22001EF7B0 /* NotificationEvent.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,7 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BC05CFD2054AB5C001EF7B0 /* NotificationsTableViewCell.swift in Sources */,
-				2BC05CFF2054AC22001EF7B0 /* Notification.swift in Sources */,
+				2BC05CFF2054AC22001EF7B0 /* NotificationEvent.swift in Sources */,
 				2BC05CE720547AD6001EF7B0 /* NewCheckInViewController.swift in Sources */,
 				2BC05CE520547AD6001EF7B0 /* AppDelegate.swift in Sources */,
 				2BC05CF92054A9F1001EF7B0 /* NotificationsViewController.swift in Sources */,
