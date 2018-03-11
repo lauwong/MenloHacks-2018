@@ -24,9 +24,7 @@ class NotificationsViewController: UITableViewController {
             for item in snapshot.children {
                 // 4
                 let notificationItem = Notification(snapshot: item as! DataSnapshot)
-                if(notificationItem.approved){
-                    newItems.append(notificationItem)
-                }
+                newItems.append(notificationItem)
             }
             
             // 5
@@ -44,7 +42,12 @@ class NotificationsViewController: UITableViewController {
         
         let notification = notificationDisplays[indexPath.row]
         cell.nameLabel.text = notification.notifier
-        cell.infoLabel.text = notification.numberOf + " times, once every " + notification.interval + "hours starting at " + notification.startTime + " on " + notification.startTime
+        let numberOfTimes = String(notification.numberOf)
+        cell.infoLabel.text = numberOfTimes + " times, once every " + notification.intervalHour + ":" + notification.intervalMin + "hours starting at " + notification.startHour + ":" + notification.startMin + " on " + notification.date
     }
+    
+    @IBAction func addNotificationPressed(_ sender: UIBarButtonItem) {
+    }
+    
     
 }

@@ -7,19 +7,56 @@
 //
 
 import UIKit
+import Firebase
 
 class Notification {
     var notifier: String
     var date: String
     var numberOf: Int
-    var startTime: String
-    var interval: String
+    var startHour: Int
+    var startMin: Int
+    var intervalHour: Int
+    var intervalMin: Int
+    let ref: DatabaseReference?
+    let key: String
     
-    init(notifier: String, date: String, numberOf: Int, startTime: String, interval: String) {
+    init?(notifier: String, date: String, numberOf: Int, startHour: Int, startMin: Int, intervalHour: Int, intervalMin: Int, key: String = "") {
+        if(notifier.isEmpty || date.isEmpty || key.isEmpty) {
+            return nil
+        }
+        self.key = key
         self.notifier = notifier
         self.date = date
         self.numberOf = numberOf
-        self.startTime = startTime
-        self.interval = interval
+        self.startHour = startHour
+        self.startMin = startMin
+        self.intervalHour = intervalHour
+        self.intervalMin = intervalMin
+        self.ref = nil
+    }
+    
+    init(snapshot: DataSnapshot) {
+        key = snapshot.key
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        notifier = snapshotValue["notifier"] as! String
+        date = snapshotValue["date"] as! String
+        numberOf = snapshotValue["numberOf"] as! Int
+        startHour = snapshotValue["startTime"] as! Int
+        startMin = snapshotValue["startMin"] as! Int
+        intervalHour = snapshotValue["intervalHour"] as! Int
+        intervalMin = snapshotValue["intervalMin"] as! Int
+        ref = snapshot.ref
+    }
+    
+    func toAnyObject() -> Any {
+        return [
+            "notifier": notifier,
+            "date": date,
+            "numberOf": numberOf,
+            "startHour": startHour,
+            "startMin": startMin,
+            "intervalHour": intervalHour,
+            "intervalMin": intervalMin
+        ]
     }
 }
