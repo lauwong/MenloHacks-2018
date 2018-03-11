@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>972628340506-pu1ir3v6ag7n2vmqkf8o8opitdc04l7o.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.972628340506-pu1ir3v6ag7n2vmqkf8o8opitdc04l7o</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDRQkYoi3jzH8lH2fZiSt630q_1WypKTn8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>972628340506</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.menlohacks.FamilyCheckIn</string>
+	<key>PROJECT_ID</key>
+	<string>helicopter-e0033</string>
+	<key>STORAGE_BUCKET</key>
+	<string>helicopter-e0033.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:972628340506:ios:c53b83a9278e577a</string>
+	<key>DATABASE_URL</key>
+	<string>https://helicopter-e0033.firebaseio.com</string>
+</dict>
+</plist>
