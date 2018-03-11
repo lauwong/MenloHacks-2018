@@ -56,7 +56,7 @@ class NotificationsViewController: UITableViewController {
         }
 
         let notification = notificationDisplays[indexPath.row]
-        cell.nameLabel.text = notification.notifier
+        cell.nameLabel.text = notification.receiver
         let numberOfTimes = String(notification.numberOf)
         let interval = String(notification.interval)
         let startTime = String(notification.startTime)
