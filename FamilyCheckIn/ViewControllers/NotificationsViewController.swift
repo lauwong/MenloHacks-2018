@@ -13,6 +13,7 @@ class NotificationsViewController: UITableViewController {
     
     var notificationDisplays = [NotificationEvent]()
     var ref = Database.database().reference(withPath: "activeNotifications")
+    let usersRef = Database.database().reference(withPath: "users")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,10 @@ class NotificationsViewController: UITableViewController {
             for item in snapshot.children {
                 // 4
                 let notificationItem = NotificationEvent(snapshot: item as! DataSnapshot)
-                newItems.append(notificationItem)
+                
+                if(notificationItem.notifier == UIDevice.current.identifierForVendor!.uuidString) {
+                    newItems.append(notificationItem)
+                }
             }
             
             // 5
@@ -34,6 +38,17 @@ class NotificationsViewController: UITableViewController {
             //print(snapshot)
         }) {(error) in
             print(error.localizedDescription)
+        }
+        
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            print("Not first launch.")
+        }
+        else {
+            let userItem = User(uuid: UIDevice.current.identifierForVendor!.uuidString)
+            let userItemRef = self.usersRef.child("users")
+            userItemRef.setValue(userItem?.toAnyObject())
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
         
     }

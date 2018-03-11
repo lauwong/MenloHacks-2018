@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B91CEDC2055208E0010E997 /* ResponsesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B91CEDB2055208E0010E997 /* ResponsesViewController.swift */; };
+		2B91CEDE205529AF0010E997 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B91CEDD205529AF0010E997 /* User.swift */; };
 		2BC05CE520547AD6001EF7B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC05CE420547AD6001EF7B0 /* AppDelegate.swift */; };
 		2BC05CE720547AD6001EF7B0 /* NewCheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC05CE620547AD6001EF7B0 /* NewCheckInViewController.swift */; };
 		2BC05CEA20547AD6001EF7B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BC05CE820547AD6001EF7B0 /* Main.storyboard */; };
@@ -21,6 +23,9 @@
 
 /* Begin PBXFileReference section */
 		0807C22C679CA90A6557D2C8 /* Pods-FamilyCheckIn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamilyCheckIn.release.xcconfig"; path = "Pods/Target Support Files/Pods-FamilyCheckIn/Pods-FamilyCheckIn.release.xcconfig"; sourceTree = "<group>"; };
+		2B91CEDB2055208E0010E997 /* ResponsesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsesViewController.swift; sourceTree = "<group>"; };
+		2B91CEDD205529AF0010E997 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2B91CEDF205530A10010E997 /* FamilyCheckIn.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FamilyCheckIn.entitlements; sourceTree = "<group>"; };
 		2BC05CE120547AD6001EF7B0 /* FamilyCheckIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamilyCheckIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BC05CE420547AD6001EF7B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BC05CE620547AD6001EF7B0 /* NewCheckInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckInViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +74,7 @@
 		2BC05CE320547AD6001EF7B0 /* FamilyCheckIn */ = {
 			isa = PBXGroup;
 			children = (
+				2B91CEDF205530A10010E997 /* FamilyCheckIn.entitlements */,
 				2BC05CE420547AD6001EF7B0 /* AppDelegate.swift */,
 				2BC05CFA2054AB28001EF7B0 /* ViewControllers */,
 				2BC05CFB2054AB3F001EF7B0 /* Models */,
@@ -86,6 +92,7 @@
 			children = (
 				2BC05CE620547AD6001EF7B0 /* NewCheckInViewController.swift */,
 				2BC05CF82054A9F1001EF7B0 /* NotificationsViewController.swift */,
+				2B91CEDB2055208E0010E997 /* ResponsesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -94,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				2BC05CFC2054AB5C001EF7B0 /* NotificationsTableViewCell.swift */,
+				2B91CEDD205529AF0010E997 /* User.swift */,
 				2BC05CFE2054AC22001EF7B0 /* NotificationEvent.swift */,
 			);
 			path = Models;
@@ -156,6 +164,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -199,9 +210,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FamilyCheckIn/Pods-FamilyCheckIn-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -215,6 +229,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FamilyCheckIn/Pods-FamilyCheckIn-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -222,6 +237,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -257,11 +273,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B91CEDC2055208E0010E997 /* ResponsesViewController.swift in Sources */,
 				2BC05CFD2054AB5C001EF7B0 /* NotificationsTableViewCell.swift in Sources */,
 				2BC05CFF2054AC22001EF7B0 /* NotificationEvent.swift in Sources */,
 				2BC05CE720547AD6001EF7B0 /* NewCheckInViewController.swift in Sources */,
 				2BC05CE520547AD6001EF7B0 /* AppDelegate.swift in Sources */,
 				2BC05CF92054A9F1001EF7B0 /* NotificationsViewController.swift in Sources */,
+				2B91CEDE205529AF0010E997 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +417,9 @@
 			baseConfigurationReference = 450525940F538F7380E4A213 /* Pods-FamilyCheckIn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FamilyCheckIn/FamilyCheckIn.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NGV232X4L3;
 				INFOPLIST_FILE = FamilyCheckIn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.menlohacks.FamilyCheckIn;
@@ -414,7 +434,9 @@
 			baseConfigurationReference = 0807C22C679CA90A6557D2C8 /* Pods-FamilyCheckIn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FamilyCheckIn/FamilyCheckIn.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NGV232X4L3;
 				INFOPLIST_FILE = FamilyCheckIn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.menlohacks.FamilyCheckIn;
