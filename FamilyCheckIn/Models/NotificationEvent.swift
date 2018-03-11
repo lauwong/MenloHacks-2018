@@ -11,7 +11,7 @@ import Firebase
 
 class NotificationEvent {
     var notifier: String
-    var reciever: String
+    var receiver: String
     var date: String
     var numberOf: Int
     var startTime: String
@@ -19,13 +19,13 @@ class NotificationEvent {
     let ref: DatabaseReference?
     let key: String
     
-    init?(notifier: String, reciever: String, date: String, numberOf: Int, startTime: String, interval: String, key: String = "") {
-        if(notifier.isEmpty || reciever.isEmpty || date.isEmpty || startTime.isEmpty || interval.isEmpty) {
+    init?(notifier: String, receiver: String, date: String, numberOf: Int, startTime: String, interval: String, key: String = "") {
+        if(notifier.isEmpty || receiver.isEmpty || date.isEmpty || startTime.isEmpty || interval.isEmpty) {
             return nil
         }
         self.key = key
         self.notifier = notifier
-        self.reciever = reciever
+        self.receiver = receiver
         self.date = date
         self.numberOf = numberOf
         self.startTime = startTime
@@ -37,18 +37,18 @@ class NotificationEvent {
         key = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
         notifier = snapshotValue["notifier"] as! String
-        reciever = snapshotValue["reciever"] as! String
+        receiver = snapshotValue["receiver"] as! String
         date = snapshotValue["date"] as! String
         numberOf = snapshotValue["numberOf"] as! Int
         startTime = snapshotValue["startTime"] as! String
-        interval = snapshotValue["intervalTime"] as! String
+        interval = snapshotValue["interval"] as! String
         ref = snapshot.ref
     }
     
     func toAnyObject() -> Any {
         return [
             "notifier": notifier,
-            "receiver": reciever,
+            "receiver": receiver,
             "date": date,
             "numberOf": numberOf,
             "startTime": startTime,

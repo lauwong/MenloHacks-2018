@@ -69,9 +69,9 @@
 		2BC05CE320547AD6001EF7B0 /* FamilyCheckIn */ = {
 			isa = PBXGroup;
 			children = (
+				2BC05CE420547AD6001EF7B0 /* AppDelegate.swift */,
 				2BC05CFA2054AB28001EF7B0 /* ViewControllers */,
 				2BC05CFB2054AB3F001EF7B0 /* Models */,
-				2BC05CE420547AD6001EF7B0 /* AppDelegate.swift */,
 				2BC05CE820547AD6001EF7B0 /* Main.storyboard */,
 				2BC05CEB20547AD6001EF7B0 /* Assets.xcassets */,
 				2BC05CED20547AD6001EF7B0 /* LaunchScreen.storyboard */,

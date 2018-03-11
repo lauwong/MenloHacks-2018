@@ -24,6 +24,8 @@ class NewCheckInViewController: UIViewController, CNContactPickerDelegate, UIScr
     let timePicker = UIDatePicker()
     let intervalPicker = UIDatePicker()
     var selectedContact = CNContact()
+    let startDate = Date()
+    var timeInterval = TimeInterval()
     let ref = Database.database().reference(withPath: "activeNotifications")
     
     override func viewDidLoad() {
@@ -82,7 +84,7 @@ class NewCheckInViewController: UIViewController, CNContactPickerDelegate, UIScr
         let numberOf = Int(numberOfTextField.text!)!
         let interval = intervalTextField.text!
         
-        let notificationItem = NotificationEvent(notifier: UIDevice.current.identifierForVendor!.uuidString, reciever: phoneNumber, date: startDate, numberOf: numberOf, startTime: startTime, interval: interval)
+        let notificationItem = NotificationEvent(notifier: UIDevice.current.identifierForVendor!.uuidString, receiver: phoneNumber, date: startDate, numberOf: numberOf, startTime: startTime, interval: interval)
         
         if notificationItem == nil {
             let alertEmpty = UIAlertController(title: "Empty Field",
@@ -111,6 +113,13 @@ class NewCheckInViewController: UIViewController, CNContactPickerDelegate, UIScr
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+    }
+    
+    func checkEndTime() {
+        if let repetitions = numberOfTextField.text {
+            let endDate = startDate.addingTimeInterval(timeInterval * Double(repetitions)!)
+            endingAtLabel.text = "Currently ending at : " + String(describing: endDate)
+        }
     }
     
 }
@@ -249,6 +258,7 @@ extension NewCheckInViewController {
         let hours = (time / 3600)
         //format date
         intervalTextField.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+        timeInterval = TimeInterval(time)
         self.view.endEditing(true)
     }
 }
