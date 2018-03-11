@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class NotificationsViewController: UIViewController {
+class NotificationsViewController: UITableViewController {
     
     var notificationDisplays = [Notification]()
     let ref = Database.database().reference(withPath: "activeNotifications")
@@ -33,6 +33,18 @@ class NotificationsViewController: UIViewController {
             self.notificationDisplays = newItems
             self.tableView.reloadData()
         })
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "NotificationsTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NotificationsTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of RequestTableViewCell.")
+        }
+        
+        let notification = notificationDisplays[indexPath.row]
+        cell.nameLabel.text = notification.notifier
+        cell.infoLabel.text = notification.numberOf + " times, once every " + notification.interval + "hours starting at " + notification.startTime + " on " + notification.startTime
     }
     
 }

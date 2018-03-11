@@ -13,13 +13,13 @@
         <!--Active Notifications-->
         <scene sceneID="6E8-cP-Mfp">
             <objects>
-                <tableViewController id="9B1-OX-B5h" sceneMemberID="viewController">
+                <tableViewController id="9B1-OX-B5h" customClass="NotificationsViewController" customModule="FamilyCheckIn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wan-S2-VGi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="79" id="ayo-Ow-qZL">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="79" id="ayo-Ow-qZL" customClass="NotificationsTableViewCell" customModule="FamilyCheckIn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ayo-Ow-qZL" id="Ffc-W7-m4F">
@@ -42,6 +42,10 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="infoLabel" destination="FOi-k5-cb3" id="iaS-EQ-wfa"/>
+                                    <outlet property="nameLabel" destination="Inq-tW-nm0" id="YJ9-YI-MZ9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
