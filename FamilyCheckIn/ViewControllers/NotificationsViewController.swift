@@ -12,10 +12,11 @@ import Firebase
 class NotificationsViewController: UITableViewController {
     
     var notificationDisplays = [Notification]()
-    let ref = Database.database().reference(withPath: "activeNotifications")
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference(withPath: "activeNotifications")
         ref.observe(.value, with: { snapshot in
             // 2
             var newItems: [Notification] = []
@@ -43,7 +44,13 @@ class NotificationsViewController: UITableViewController {
         let notification = notificationDisplays[indexPath.row]
         cell.nameLabel.text = notification.notifier
         let numberOfTimes = String(notification.numberOf)
-        cell.infoLabel.text = numberOfTimes + " times, once every " + notification.intervalHour + ":" + notification.intervalMin + "hours starting at " + notification.startHour + ":" + notification.startMin + " on " + notification.date
+        let intervalHour = String(notification.intervalHour)
+        let intervalMin = String(notification.intervalMin)
+        let startHour = String(notification.startHour)
+        let startMin = String(notification.startMin)
+        let date = notification.date
+        cell.infoLabel.text = numberOfTimes + " times, once every " + intervalHour + ":" + intervalMin + "hours starting at " + startHour + ":" + startMin + " on " + date
+        return cell
     }
     
     @IBAction func addNotificationPressed(_ sender: UIBarButtonItem) {

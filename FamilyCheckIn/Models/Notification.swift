@@ -11,6 +11,7 @@ import Firebase
 
 class Notification {
     var notifier: String
+    var reciever: String
     var date: String
     var numberOf: Int
     var startHour: Int
@@ -20,12 +21,13 @@ class Notification {
     let ref: DatabaseReference?
     let key: String
     
-    init?(notifier: String, date: String, numberOf: Int, startHour: Int, startMin: Int, intervalHour: Int, intervalMin: Int, key: String = "") {
-        if(notifier.isEmpty || date.isEmpty || key.isEmpty) {
+    init?(notifier: String, reciever: String, date: String, numberOf: Int, startHour: Int, startMin: Int, intervalHour: Int, intervalMin: Int, key: String = "") {
+        if(notifier.isEmpty || reciever.isEmpty || date.isEmpty || key.isEmpty) {
             return nil
         }
         self.key = key
         self.notifier = notifier
+        self.reciever = reciever
         self.date = date
         self.numberOf = numberOf
         self.startHour = startHour
@@ -39,6 +41,7 @@ class Notification {
         key = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
         notifier = snapshotValue["notifier"] as! String
+        reciever = snapshotValue["reciever"] as! String
         date = snapshotValue["date"] as! String
         numberOf = snapshotValue["numberOf"] as! Int
         startHour = snapshotValue["startTime"] as! Int
@@ -51,6 +54,7 @@ class Notification {
     func toAnyObject() -> Any {
         return [
             "notifier": notifier,
+            "receiver": reciever,
             "date": date,
             "numberOf": numberOf,
             "startHour": startHour,
